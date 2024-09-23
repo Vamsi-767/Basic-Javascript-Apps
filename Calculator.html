@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculator</title>
+    <style>
+    	header {
+			background-color: #993333;
+			color: white;
+			padding: 25px;
+			text-align: center;
+			font-size: 40px;
+			font-family: 'Cooper Black', sans-serif;
+			position: fixed;
+			width: 100%;
+			top: 0;
+			left: 0;
+			animation: blinkBackground1 5s infinite;
+		}
+		@keyframes blinkBackground1 {
+			0% {
+				background-color: skyblue;
+			}
+			50% {
+				background-color: darkred;
+			}
+			100% {
+				background-color: lightblue;
+			}
+			
+		}
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 110vh;
+            background-color: #fff;
+            margin: 0;
+        }
+        .calculator {
+            width: 400px;
+            background-color: #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px;
+            padding: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 50px;
+            border: blue;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 24px;
+            text-align: right;
+            box-shadow: inset 0px 2px 4px;
+        }
+        input[type="button"] {
+            width: 80px;
+            height: 50px;
+            margin: 5px;
+            border: white;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0px 4px 8px ;
+            
+        }
+        input[type="button"]:hover {
+            box-shadow: 0px 6px 12px;
+            transform: translateY(-2px);
+        }
+        input[name="1"] { background-color: #ff7675; }
+        input[name="2"] { background-color: #fd79a8; }
+        input[name="3"] { background-color: #a29bfe; }
+        input[name="plus"] { background-color: #6c5ce7; width: 106px; }
+
+        input[name="4"] { background-color: #74b9ff; }
+        input[name="5"] { background-color: #55efc4; }
+        input[name="6"] { background-color: #81ecec; }
+        input[name="minus"] { background-color: #00cec9; width: 106px; }
+
+        input[name="7"] { background-color: #ffeaa7; }
+        input[name="8"] { background-color: #fab1a0; }
+        input[name="9"] { background-color: #ff7675; }
+        input[name="multiplication"] { background-color: #d63031; width: 106px; }
+
+        input[name="point"] { background-color: #e17055; }
+        input[name="0"] { background-color: #fdcb6e; }
+        input[name="hash"] { background-color: #00b894; }
+        input[name="division"] { background-color: #0984e3; width: 106px; }
+
+        input[name="clear"] { background-color: #636e72; width: 185px; }
+        input[name="equal"] { background-color: #2d3436; width: 185px; }
+    </style>
+</head>
+<body>
+	<header>
+		Calculator
+	</header>
+    <div class="calculator">
+        <form name="frm">
+            <input type="text" name="result" readonly>
+            <br>
+            <input type="button" name="1" value="1" onclick="run1()">
+            <input type="button" name="2" value="2" onclick="run2()">
+            <input type="button" name="3" value="3" onclick="run3()">
+            <input type="button" name="plus" value="+" onclick="plus1()">
+            <br>
+            <input type="button" name="4" value="4" onclick="run4()">
+            <input type="button" name="5" value="5" onclick="run5()">
+            <input type="button" name="6" value="6" onclick="run6()">
+            <input type="button" name="minus" value="-" onclick="minus1()">
+            <br>
+            <input type="button" name="7" value="7" onclick="run7()">
+            <input type="button" name="8" value="8" onclick="run8()">
+            <input type="button" name="9" value="9" onclick="run9()">
+            <input type="button" name="multiplication" value="*" onclick="multiplication1()">
+            <br>
+            <input type="button" name="point" value="." onclick="point1()">
+            <input type="button" name="0" value="0" onclick="run0()">
+            <input type="button" name="hash" value="#" onclick="hash1()">
+            <input type="button" name="division" value="/" onclick="division1()">
+            <br>
+            <input type="button" name="clear" value="C" onclick="clear1()">
+            <input type="button" name="equal" value="=" onclick="evalo()">
+        </form>
+    </div>
+<script type="text/javascript">
+    function run1() {
+        document.frm.result.value += 1;
+    }
+    function run2() {
+        document.frm.result.value += 2;
+    }
+    function run3() {
+        document.frm.result.value += 3;
+    }
+    function run4() {
+        document.frm.result.value += 4;
+    }
+    function run5() {
+        document.frm.result.value += 5;
+    }
+    function run6() {
+        document.frm.result.value += 6;
+    }
+    function run7() {
+        document.frm.result.value += 7;
+    }
+    function run8() {
+        document.frm.result.value += 8;
+    }
+    function run9() {
+        document.frm.result.value += 9;
+    }
+    function run0() {
+        document.frm.result.value += 0;
+    }
+    function clear1() {
+        document.frm.result.value = "";
+    }
+    function plus1() {
+        document.frm.result.value += "+";
+    }
+    function minus1() {
+        document.frm.result.value += "-";
+    }
+    function multiplication1() {
+        document.frm.result.value += "*";
+    }
+    function division1() {
+        document.frm.result.value += "/";
+    }
+    function hash1() {
+        document.frm.result.value += "#";
+    }
+    function point1() {
+        document.frm.result.value += ".";
+    }
+    function evalo() {
+        try {
+            document.frm.result.value = eval(document.frm.result.value);
+        } catch (err) {
+            document.frm.result.value = "Error";
+        }
+    }
+</script>
+
+</body>
+</html>

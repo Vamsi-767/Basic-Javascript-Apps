@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic JS Apps</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #66ccff;
+        }
+
+        header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+
+        animation: blinkBackground1 5s infinite;
+        }
+        @keyframes blinkBackground1 {
+            0% {
+                background-color: darkblue;
+            }
+            50% {
+                background-color: royalblue;
+            }
+            100% {
+                background-color: cadetblue;
+            }
+            
+        }
+
+        header.hidden {
+            opacity: 0; 
+            pointer-events: none; 
+        }
+
+        .menu {
+            text-align: center;
+            margin: 80px 0 20px; 
+        }
+
+        .menu button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .menu button:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        .content {
+            position: relative;
+            padding: 10px;
+            text-align: center;
+            margin-top: 60px; 
+        }
+
+        .project-preview {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 0;
+        }
+
+        .preview {
+            width: 22%;
+            margin: 10px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1;
+        }
+
+        .preview:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .project {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 20; 
+            overflow-y: auto;
+        }
+
+        .project.active {
+            display: block;
+        }
+
+        .project h2 {
+            margin-top: 0;
+            color: #4a90e2;
+        }
+
+        iframe {
+            width: 100%;
+            height: calc(100vh - 40px); 
+            border: none;
+        }
+        .footer{
+        text-align: center;
+        background-color: black;
+        color: white;
+        height: 100px;
+      }
+      .footer a{
+        color:blue;
+        text-decoration: none;
+
+      }
+
+    </style>
+</head>
+<body>
+
+    <header id="header">
+       Basic JS Apps
+    </header>
+
+    <div class="menu">
+        <button onclick="showProject('calculator')">Calculator</button>
+        <button onclick="showProject('domAnimation')">DOM Animation</button>
+        <button onclick="showProject('registrationForm')">Registration Form</button>
+        <button onclick="showProject('eventListener')">Event Listener</button>
+    </div>
+
+    <div class="content">
+        <div class="project-preview">
+            <div class="preview" onclick="showProject('calculator')">
+                <h3>Calculator</h3>
+                <p>A simple calculator with basic arithmetic operations.</p>
+            </div>
+
+            <div class="preview" onclick="showProject('domAnimation')">
+                <h3>DOM Animation</h3>
+                <p>A DOM animation example with moving elements.</p>
+            </div>
+
+            <div class="preview" onclick="showProject('registrationForm')">
+                <h3>Registration Form</h3>
+                <p>A form with validation for user registration.</p>
+            </div>
+
+            <div class="preview" onclick="showProject('eventListener')">
+                <h3>Event Listener</h3>
+                <p>Demonstrates different event listeners in action.</p>
+            </div>
+        </div>
+
+        <div id="calculator" class="project">
+            <iframe src="calculator.html"></iframe>
+        </div>
+
+        <div id="domAnimation" class="project">
+            <iframe src="DOM_Animation.html"></iframe>
+        </div>
+
+        <div id="registrationForm" class="project">
+            <iframe src="Registration_form.html"></iframe>
+        </div>
+
+        <div id="eventListener" class="project">
+            <iframe src="EventListener.html"></iframe>
+        </div>
+    </div>
+    <div>
+    <div class="footer">
+        <p>Designed by:Vamsi Krishna Bodaballa</p>
+        <p>E-mail:<a href="vamsikrishnabodaballa7@gmail.com">vamsikrishnabodaballa7@gmail.com</a></p>
+        
+<p id="me">&copy;VKB</p>
+    </div>
+
+    <script>
+        function showProject(projectId) {
+            // Hide the header
+            document.getElementById('header').classList.add('hidden');
+
+            // Hide all projects
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                project.classList.remove('active');
+            });
+
+            // Show the selected project
+            const activeProject = document.getElementById(projectId);
+            if (activeProject) {
+                activeProject.classList.add('active');
+            }
+        }
+
+        // Optional: Add a way to go back to the menu view
+        function hideProject() {
+            document.getElementById('header').classList.remove('hidden');
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                project.classList.remove('active');
+            });
+        }
+    </script>
+
+</body>
+</html>
